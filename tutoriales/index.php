@@ -16,7 +16,7 @@
 	<div class="navbar-fixed">
 		<nav>
 			<div class="nav-wrapper">
-				<a href="../index.php" id="Logo" class="brand-logo left">n³</a><a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
+				<a href="../index.php" id="Logo" class="brand-logo left"><img src="../img/buenFin.png" height="50px">n³</a><a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
 				<ul  id="enlaces_menu" class="hide-on-med-and-down">
 					<li><a href="../catalogo/index.php">Tienda</a></li>
 					<li><a href="../ofertas/index.php">Ofertas</a></li>

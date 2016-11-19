@@ -1338,7 +1338,7 @@ input[type=datetime-local]:focus:not([readonly]) + label,
 input[type=tel]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label,
 input[type=search]:focus:not([readonly]) + label,
-textarea.materialize-textarea:focus:not([readonly]) + label{color:#26a69a;}
+textarea.materialize-textarea:focus:not([readonly]) + label{color:#ff6431;}
 input:not([type]).valid, input:not([type]):focus.valid,
 input[type=text].valid,
 input[type=text]:focus.valid,

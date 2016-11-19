@@ -8,10 +8,12 @@
 	<link rel="stylesheet" type="text/css" href="css/home.css">
 	<link rel="stylesheet" type="text/css" href="css/materialize.css" > <!-- Carga asincronida media="none" onload="if(media!='all')media='all'"-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 	<script type="text/javascript" async src="js/jquery.js"></script>
 	<script type="text/javascript" async src="js/validacioneslogin.js"></script>
 	<script type="text/javascript" async src="js/fblogin.js"></script>
 	<script type="text/javascript" async src="js/materialize.min.js"></script>
+	<script src="dist/sweetalert-dev.js"></script> 
 
 </head>
 <body>
@@ -34,6 +36,8 @@
 					fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
 			</script>
+
+			
 
 			<div class="col s12 m12 l12" id="FacebookLogin">
 				<div class="col s0 m3 l3"></div>

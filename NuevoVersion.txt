@@ -1,3 +1,2 @@
-- Carrito
-- Formulario direccion
-- Pagina de pago
+-Correcion validaciones-
+-Nuevas alertas <3

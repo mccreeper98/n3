@@ -6,6 +6,7 @@
 	<link rel="shortcut icon" href="favicon.png" />
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/home.css">
+	<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 	<link rel="stylesheet" type="text/css" href="css/materialize.css">
 	<!-- Carga asincronida media="none" onload="if(media!='all')media='all'"-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,6 +14,7 @@
 	<script type="text/javascript" async src="js/jquery.js"></script>
 	<script type="text/javascript" async src="js/fbsignup.js"></script>
 	<script type="text/javascript" async src="js/materialize.min.js"></script>
+	<script src="dist/sweetalert-dev.js"></script> 
 </head>
 <body>
 	<div class="container">
@@ -66,9 +68,9 @@
 						<input  type="text" name="apellidomaterno" id="apellidomaterno">
 					</div>
 					<label>Genero</label><br><br>
-					<input name="Genero" type="radio" id="Masculino" />
+					<input name="Genero" type="radio" id="Masculino"/>
 					<label for="Masculino">Masculino</label>
-					<input name="Genero" type="radio" id="Femenino" />
+					<input name="Genero" type="radio" id="Femenino"/>
 					<label for="Femenino" class="right">Femenino</label><br><br>
 					<label class="col s12 m12 l12">Fecha de nacimiento: DD/MM/YYYY</label>
 					<div class="col s4 m4 l4">

@@ -17,14 +17,14 @@
 			<div class="navbar-fixed">
 				<nav>
 					<div class="nav-wrapper">
-						<a href="index.php" id="Logo" class="brand-logo left" title="Inicio"><img src="img/buenFin.png" height="50px">n³</a>
+						<a href="index.php" id="Logo" class="brand-logo left"><img src="img/buenFin.png" height="50px">n³</a>
 						<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
 						<ul  id="enlaces_menu" class="hide-on-med-and-down">
 							<li><a href="catalogo/index.php">Tienda</a></li>
 							<li><a href="ofertas/index.php">Ofertas</a></li>
 							<li><a href="tutoriales/index.php">Tutoriales</a></li>	
 							<ul id="" class="hide-on-med-and-down right">	
-								<li><a href="carrito/index.php" id="BotonCarrito" title="Ver Carrito de Compras"><img height="50px" src="img/carrito.png"></a></li>
+								<li><a href="carrito/index.php" id="BotonCarrito"><img height="50px" src="img/carrito.png"></a></li>
 								<li><a href="SignUp.php" id="BotonSignUp">Registrate</a></li>
 								<li><a href="Login.php" id="BotonLogin">Inicio de sesión</a></li>				
 							</ul>		
@@ -35,7 +35,7 @@
 							<a href="carrito/index.php" id="BotonCarrito"><img height="50px" src="img/carrito.png"></a>	
 							<li><a href="SignUp.php" id="BotonSignUp">Registrate</a></li>		
 							<li><a href="Login.php" id="BotonLogin">Inicio de sesión</a></li>	
-							<li><a href="ofertas/index.php">Ofertas</a></li>	
+							<li><a href="">Ofertas</a></li>	
 							<li><a href="tutoriales/index.php">Tutoriales</a></li>
 						</ul>
 					</div>		
@@ -131,7 +131,7 @@
 								Ofertas
 							</div>
 							<div id="masofertas" class="col s6  m6 l6 right">
-								<a href="ofertas/index.php">Todas las ofertas</a>
+								<a href="">Todas las ofertas</a>
 							</div>
 							<div class="row">
 								<!--Proucto 1-->

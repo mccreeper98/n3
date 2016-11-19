@@ -17,7 +17,7 @@
 			<div class="navbar-fixed">
 				<nav>
 					<div class="nav-wrapper">
-						<a href="index.php" id="Logo" class="brand-logo left" title="Inicio">n³</a>
+						<a href="index.php" id="Logo" class="brand-logo left" title="Inicio"><img src="img/buenFin.png" height="50px">n³</a>
 						<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
 						<ul  id="enlaces_menu" class="hide-on-med-and-down">
 							<li><a href="catalogo/index.php">Tienda</a></li>
@@ -79,9 +79,9 @@
 						</li>
 						<li>
 							<img src="img/slide4.jpg"> 
-							<div class="caption center-align">
-								<h3>Móntatelo como quieras</h3>
-								<h5 class="light grey-text text-lighten-3">Cubos personalizados</h5>
+							<div class="caption left-align">
+								<h3 class="black-text">Móntatelo como quieras</h3>
+								<h5 class="light black-text text-lighten-3">Cubos personalizados</h5>
 							</div>
 						</li>
 					</ul>

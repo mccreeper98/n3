@@ -9,6 +9,7 @@ function validar() {
 	var pass2;
 	var year;
 	var dia;
+	var genero;
 
 	nombre = document.getElementById("nombre").value;
 	apellidopaterno = document.getElementById("apellidopaterno").value;   
@@ -20,50 +21,56 @@ function validar() {
 	pass = document.getElementById("pass").value;
 	pass2 = document.getElementById("pass2").value; 	
 	indice = document.getElementById("opc").selectedIndex;    
+	genero = document.getElementsByName ("Genero");
 
 	expresion = /\w+@\w+\.+[a-z]/;
 
 	if (nombre === "" || apellidomaterno === "" || apellidopaterno === "" || telefono === "" || correo === "" || pass === "" || dia === "" || year === "") {
-		alert("Todos los campos son obligatorios");
+		sweetAlert("Oops...", "Todos los campos son obligatorios", "error");
 		return false;
 	}
 
 	if (nombre <= 0 || nombre >= 0) {
-		alert("El nombre no puede contener numeros");
+		sweetAlert("Oops...", "El nombre no puede contener numeros", "error");
 		return false;
 	}
 
 	if (apellidopaterno <= 0 || apellidopaterno >= 0) {
-		alert("El apellido paterno no puede contener numeros");
+
+		sweetAlert("Oops...", "El apellido paterno no puede contener numeros", "error");
 		return false;
 	}
 
 	if (apellidomaterno <= 0 || apellidomaterno >= 0) {
-		alert("El apellido materno no puede contener numeros");
+
+		sweetAlert("Oops...", "El apellido materno no puede contener numeros", "error");
 		return false;
 	}
 
 	if(isNaN(telefono)) {
-		alert("El telefono no es numerico");
+
+		sweetAlert("Oops...", "El telefono no es numerico", "error");
 		return false;
 	}
-	 
+
 	if (!expresion.test(correo)) 
 	{
-		alert("El correo no es correcto");
+		sweetAlert("Oops...", "El correo no es correcto", "error");
 		return false;
 	}
 
 
 	if (pass != pass2) 
 	{
-		alert("Las contraseñas no son iguales");
+
+		sweetAlert("Oops...", "Las contraseñas no son iguales", "error");
+
 		return false;
 	}
 
 	if (isNaN(dia)) 
 	{
-		alert("El dia tiene que ser numerico");
+		sweetAlert("Oops...", "El dia tiene que ser numerico", "error");
 		return false;
 	} 
 	
@@ -73,7 +80,8 @@ function validar() {
 	} 
 	else
 	{
-		alert("El dia tiene que ser entre 1 o 31");
+
+		sweetAlert("Oops...", "El dia tiene que ser entre 1 o 31", "error");
 		return false;
 	}
 
@@ -85,24 +93,24 @@ function validar() {
 	}
 	else
 	{
-		alert("El dia debe de tener el formato DD");
+		sweetAlert("Oops...", "El dia debe de tener el formato DD", "error");
 		return false;
 	}
 	
 
 	if (isNaN(year)) 
 	{
-		alert("El año tiene que ser numerico");
+		sweetAlert("Oops...", "El año tiene que ser numerico", "error");
 		return false;
 	}
 
-		if (year >1900 && year <=2100) 
+	if (year >1900 && year <=2100) 
 	{
 
 	}
 	else
 	{
-		alert("Selecciona una año valido");
+		sweetAlert("Oops...", "Selecciona una año valido", "error");
 		return false;
 	}
 
@@ -114,12 +122,13 @@ function validar() {
 	}
 	else
 	{
-		alert("El año debe de tener el formato YYYY");
+
+		sweetAlert("Oops...", "El año debe de tener el formato YYYY", "error");
 		return false;
 	}
 
 	if( indice == null || indice == 0 ) {
-		alert("Selecciona un mes");
+		sweetAlert("Oops...", "Selecciona un mes", "error");
 		return false;
 	}
 
@@ -127,9 +136,21 @@ function validar() {
 
 	if (largopass <= 3) 
 	{
-		alert("La contraseña es muy corta");
+
 		return false;
 	}
 
+	var seleccionado = false;
+	for(var i=0; i<genero.length; i++) {    
+		if(genero[i].checked) {
+			seleccionado = true;
+			break;
+		}
+	}
+
+	if(!seleccionado) {
+		sweetAlert("Oops...", "Ningun genero seleccionado", "error");
+		return false;
+	}
 
 }

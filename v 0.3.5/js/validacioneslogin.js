@@ -1,3 +1,4 @@
+
 function validar() {
 
 	var correo;
@@ -10,13 +11,13 @@ function validar() {
 
 	if (correo === "" || pass === "") 
 	{
-		alert("Todos los campos son obligatorios");
+		sweetAlert("Oops...", "Todos los campos son obligatorios", "error");
 		return false;
 	}
 
 	else if (!expresion.test(correo)) 
 	{
-		alert("El correo no es correcto");
+		sweetAlert("Oops...", "Correo no valido", "error");
 		return false;
 	}
 	

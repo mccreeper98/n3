@@ -1,0 +1,3 @@
+- Carrito
+- Formulario direccion
+- Pagina de pago

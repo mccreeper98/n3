@@ -1,0 +1,17 @@
+body{color:#4f3e38;background-color:#F9F9F9;margin:0;border:unset;}
+a#Logo{padding-left:10%;}
+ul#enlaces_menu{padding-left:42%;}
+div#info{border:10px solid #F9F9F9;background-color:#F9F9F9;}
+div#productos{background-color:#dddddd;}
+div#servicios{color:#a6a0a1;background-color:#F9F9F9;}
+div#ofertas{font-weight:bold;font-size:16pt;height:40px;}
+div#masofertas{text-align:right;height:40px;}
+div#separador{height:50px;}
+a#BotonLogin{opacity:.7;background-color:#ff6431;color:#fff;font-weight:bold;}
+a#BotonSignUp{opacity:.7;background-color:#4f3e38;color:#fff;font-weight:bold;}
+a#BotonCarrito{height:70px;color:#fff;font-weight:bold;}
+#Titulo{color:#fff;padding-left:55%;padding-top:20%;}
+button#btn_loginfacebook{width:100%;}
+button#btn_signupfacebook{width:100%;}
+div#novedades{background-color:#D8D8D8;}
+#Enviar{text-decoration:none;color:#000;background-color:#fff;text-align:center;letter-spacing:.5px;transition:.2s ease-out;cursor:pointer;}

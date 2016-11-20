@@ -48,37 +48,19 @@
 
 	<div class="container">
 		<div class="row">
-			<h4>Información de pago:</h4>
+			<h4>Datos de pago:</h4>
 			<form method="" action="">
-				<div class="col s12 m12 l12">
-				<label>Nombre completo</label>
-					<input type="text" name="nombre" placeholder="Nombre">
-				</div>
-
-				<div class="col s12 m6 l6">
-				<label>Numero de tarjeta</label>
-					<input type="text" name="numtarjeta" placeholder="Numero de tarjeta">
-				</div>
-
-				<div class="col s12 m6 l6">
-				<label>CVV</label>
-					<input type="text" name="cvv" placeholder="CVV">
-				</div>
-
-				<div class="col s12 m6 l6">
-				<label>Fecha de vencimiento</label>
-					<input type="text" name="fechavencimiento" placeholder="Fecha de vencimiento">
-				</div>
-				
-				
+				<input type="" name="">
+				<input type="" name="">
+				<input type="" name="">
 			</form>
 			<div class="right">
 				<h4><font size="2"><a class="waves-effect waves-light btn-large" href="direc.php">Continuar</a>
-				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- Pago carrito -->
+	<!-- Pago carrito -->
 
-	</body>
-	</html>
+		</body>
+		</html>

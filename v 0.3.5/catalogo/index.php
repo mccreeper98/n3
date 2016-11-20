@@ -10,23 +10,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/materialize.min.js"></script>
-	<!--		<script type="text/javascript">
-				function yHandler(){
-			// Watch video for line by line explanation of the code
-			// http://www.youtube.com/watch?v=eziREnZPml4
-			var wrap = document.getElementById('wrap');
-			var contentHeight = wrap.offsetHeight;
-			var yOffset = window.pageYOffset; 
-			var y = yOffset + window.innerHeight;
-			if(y >= contentHeight){
-				// Ajax call to get more dynamic data goes here
-			wrap.innerHTML += '<div class="col s12 m6 l3"> <div class="card"> <div class="card-image waves-effect waves-block waves-light"> <img class="activator" src="img/producto1.jpg" width="500"> </div> <div class="card-content"> <span class="card-title activator grey-text text-darken-4">Nombre producto<i class="material-icons right">more_vert</i></span> <p><a href="#"><h5>COMPRAR</h5></a></p> </div> <div class="card-reveal"> <span class="card-title grey-text text-darken-4">Nombre producto<i class="material-icons right">close</i></span> <p>Here is some more information about this product that is only revealed once clicked on.</p> </div> </div> </div> '; 
-		}
-				var status = document.getElementById('status');
-				status.innerHTML = contentHeight+" | "+y;
-			}
-			window.onscroll = yHandler;
-		</script> -->
+
 </head>
 <body>
 
@@ -34,7 +18,7 @@
 	<div class="navbar-fixed">
 		<nav>
 			<div class="nav-wrapper">
-				<a href="../index.php" id="Logo" class="brand-logo left"><img src="../img/buenFin.png" height="50px">n³</a><a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
+				<a href="../index.php" id="Logo" class="brand-logo left">n³</a><a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
 				<ul  id="enlaces_menu" class="hide-on-med-and-down">
 					<li><a href="../catalogo/index.php">Tienda</a></li>
 					<li><a href="../ofertas/index.php">Ofertas</a></li>
@@ -186,76 +170,33 @@
 			<div class="row">
 
 				<!-- producto -->
-				<div class="col s12 m6 l3">
+				<?php
+				include '../conexion.php';
+				$re=mysql_query("select *, nomMar, Col from producto as p inner join marca as m on m.idMar = p.idMar inner join base as b on b.idProd = p.idProd inner join color as c on c.idCol = b.idCol")or die(mysql_error());
+				while ($f=mysql_fetch_array($re)) {
+					
+					?>
+					<div class="col s12 m6 l3">
 					<div class="card">
 						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="img/producto1.jpg" width="500">
+							<img class="activator" src="images/<?php echo $f['imgProd']?>" width="500">
 						</div>
 						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4">Nombre producto<i class="material-icons right">more_vert</i></span>
-							<p><a href="#"><h5>COMPRAR</h5></a></p>
+							<span class="card-title activator grey-text text-darken-4"><?php echo $f['desProd'];?><i class="material-icons right">more_vert</i></span>
+							<p><a href="../carrito/index.php?id=<?php echo $f['idProd']; ?>"><h6>Agregar al carrito</h6></a></p>
 						</div>
 						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4">Nombre producto<i class="material-icons right">close</i></span>
-							<p>Here is some more information about this product that is only revealed once clicked on.</p>
+							<span class="card-title grey-text text-darken-4"><?php echo $f['desProd'];?><i class="material-icons right">close</i></span>
+							<p>Precio: $<?php echo $f['preProd'];?></p><p>Marca: <?php echo $f['nomMar']; ?></p>
+							<p>Base: <?php echo $f['Col'] ?></p>
+							<p><a href="../carrito/index.php?id=<?php echo $f['idProd']; ?>"><h6>Agregar al carrito</h6></a></p>
 						</div>
 					</div>			
 				</div>
+				<?php
+				}
+				?>
 				<!-- producto-->
-
-					<!-- producto -->
-				<div class="col s12 m6 l3">
-					<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="img/producto1.jpg" width="500">
-						</div>
-						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4">Nombre producto<i class="material-icons right">more_vert</i></span>
-							<p><a href="#"><h5>COMPRAR</h5></a></p>
-						</div>
-						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4">Nombre producto<i class="material-icons right">close</i></span>
-							<p>Here is some more information about this product that is only revealed once clicked on.</p>
-						</div>
-					</div>			
-				</div>
-				<!-- producto-->
-					<!-- producto -->
-				<div class="col s12 m6 l3">
-					<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="img/producto1.jpg" width="500">
-						</div>
-						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4">Nombre producto<i class="material-icons right">more_vert</i></span>
-							<p><a href="#"><h5>COMPRAR</h5></a></p>
-						</div>
-						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4">Nombre producto<i class="material-icons right">close</i></span>
-							<p>Here is some more information about this product that is only revealed once clicked on.</p>
-						</div>
-					</div>			
-				</div>
-				<!-- producto-->
-						<!-- producto -->
-				<div class="col s12 m6 l3">
-					<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="img/producto1.jpg" width="500">
-						</div>
-						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4">Nombre producto<i class="material-icons right">more_vert</i></span>
-							<p><a href="#"><h5>COMPRAR</h5></a></p>
-						</div>
-						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4">Nombre producto<i class="material-icons right">close</i></span>
-							<p>Here is some more information about this product that is only revealed once clicked on.</p>
-						</div>
-					</div>			
-				</div>
-				<!-- producto-->
-
-
 			</div>
 		</div>
 		<!-- productos -->

@@ -1,3 +1,63 @@
+<?php
+	session_start();
+	include '../conexion.php';
+	if (isset($_SESSION['carrito'])) {
+		if(isset($_GET['id'])){
+			$arreglo=$_SESSION['carrito'];
+			$encontro=false;
+			$numero=0;
+			for ($i=0; $i < count($arreglo); $i++) { 
+				if ($arreglo[$i]['Id']==$_GET['id']) {
+					$encontro=true;
+					$numero=$i;
+				}
+			}
+			if($encontro==true){
+				$arreglo[$numero]['Cantidad']=$arreglo[$numero]['Cantidad']+1;
+				$_SESSION['carrito']=$arreglo;
+			}
+			else{
+
+				$nombre="";
+				$precio=0;
+				$imagen="";
+				$re=mysql_query("select * from producto where idProd =".$_GET['id'])or die(mysql_error());
+				while ($f=mysql_fetch_array($re)) {
+					$nombre=$f['desProd'];
+					$precio=$f['preProd'];
+					$imagen=$f['imgProd'];
+				}
+				$datosNuevos=array('Id'=>$_GET['id'],
+								'Nombre'=>$nombre,
+								'Precio'=>$precio,
+								'Imagen'=>$imagen,
+								'Cantidad'=>1);
+				array_push($arreglo, $datosNuevos);
+				$_SESSION['carrito']=$arreglo;
+			}
+		}
+	}	
+	else{
+		if (isset($_GET['id'])) {
+			$nombre="";
+			$precio=0;
+			$imagen="";
+			$re=mysql_query("select * from producto where idProd =".$_GET['id'])or die(mysql_error());
+			while ($f=mysql_fetch_array($re)) {
+				$nombre=$f['desProd'];
+				$precio=$f['preProd'];
+				$imagen=$f['imgProd'];
+			}
+			$arreglo[]=array('Id'=>$_GET['id'],
+							'Nombre'=>$nombre,
+							'Precio'=>$precio,
+							'Imagen'=>$imagen,
+							'Cantidad'=>1);
+			$_SESSION['carrito']=$arreglo;
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +68,9 @@
 	<link rel="stylesheet" type="text/css" href="../css/home.css" media="none" onload="if(media!='all')media='all'">
 	<link rel="stylesheet" type="text/css" href="../css/materialize.css" media="none" onload="if(media!='all')media='all'">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/can.js"></script>
 	<script type="text/javascript" src="../js/materialize.min.js"></script>
 
 </head>
@@ -49,32 +111,69 @@
 			<div class="row">
 				<h4 class="header">Carrito de compras</h4>
 				<!-- Producto -->	
+
+
+				<?php
+				$total=0;
+				if(isset($_SESSION['carrito'])){
+					$datos=$_SESSION['carrito'];
+					
+					for ($i=0; $i < count($datos); $i++) { 
+						?>
+				
 				<div class="col s12 m12">
+				<div class="producto">
 					<div class="card horizontal">
 						<div class="card-image">
-							<img src="img/noimg.png" width="20%">
+							<img src="../catalogo/images/<?php echo $datos[$i]['Imagen'];?>">
 						</div>
 						<div class="card-stacked">
 							<div class="card-content">
 								<div class="col l6 m6 s12">
-									<h5>Producto</h5>
-									<h6>Cantidad</h6>
+									<h5> <?php echo $datos[$i]['Nombre']; ?> </h5>
+									<h6>Cantidad: </h6>
+									<input type="text" value="<?php echo $datos[$i]['Cantidad'];?>"
+										<l data-precio="<?php echo $datos[$i]['Precio'];?>"
+										<l data-id="<?php echo $datos[$i]['Id'];?>"
+										<l class="cantidad">  
 								</div>
 								<div class="col l6 m6 s12">
-									<h5>Precio</h5>
+									<h5>Precio: $<?php echo $datos[$i]['Precio']; ?> </h5>
 								</div>
 							</div>
+							<h5 class="subtotal">SubTotal: $<?php echo $datos[$i]['Precio']*$datos[$i]['Cantidad']; ?> <h5>
 							<div class="card-action">
 								<h5><a href="#">Quitar</a></h5>
 							</div>
 						</div>
 					</div>
 				</div>
+				</div>
 
+					<?php
+					$total=($datos[$i]['Cantidad']*$datos[$i]['Precio'])+$total;
+					}
+				}
+				else{
+					echo '<center><h2>El Carrito de compras esta vacio</h4></center>';
+				}
+
+				echo '<center><h3 id="total">Total:$'.$total.'</h3></center>';
+
+				?>
 				<!-- Producto -->	
+				<a href="../catalogo/index.php">Ir a la Tienda</a>
+				
+				<?php
+					if ($total!=0) {
+					
+				?>
 				<div class="right">
-				<h4><font size="2"><a class="waves-effect waves-light btn-large" href="direc.php">Continuar</a>
+				<h4><font size="2"><a class="waves-effect waves-light btn-large" href="compras.php">Comprar</a>
 					</div>
+				<?php
+				}
+				?>
 				</div>
 			</div>
 

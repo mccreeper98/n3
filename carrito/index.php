@@ -188,7 +188,6 @@ else{
 
 									?>
 									<div class="right">
-										<font size="2"><a class="waves-effect waves-light btn-large" href="compras.php">Comprar</a>
 										</div>
 										<?php
 									}

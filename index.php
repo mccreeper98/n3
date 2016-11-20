@@ -60,7 +60,7 @@
 							<div class="caption center-align">
 								<h3>Al final...¡Encajan!</h3>
 								<h5 class="light grey-text text-lighten-3">Ediciones especiales 3x3</h5>
-								<a class="waves-effect waves-light btn ">Comprar</a>
+								<a class="waves-effect waves-light btn" href="catalogo/index.php">Comprar</a>
 							</div>
 						</li>
 						<li>

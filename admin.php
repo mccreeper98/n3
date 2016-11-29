@@ -1,15 +1,3 @@
-<?php
-
-session_start();
-include 'conexion.php';
-if (isset($_SESSION['Usuario'])) {
-
-}else{
-	header("Location: index.php?Error=Acceso denegado");
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +23,7 @@ if (isset($_SESSION['Usuario'])) {
 					<li><a href="#"><h5>Administración</h5></a></li>
 					<ul id="" class="hide-on-med-and-down right">	
 						<li><a href="#" id="BotonSignUp">Nombre usuario</a></li>
-						<li><a href="cerrar.php" id="BotonLogin">Cerrar sesión</a></li>				
+						<li><a href="#" id="BotonLogin">Cerrar sesión</a></li>				
 					</ul>		
 				</ul>
 
@@ -64,36 +52,6 @@ if (isset($_SESSION['Usuario'])) {
           <i class="material-icons">close</i>
         </div>
       </form>
-      <div name="tabla pedidos">
-      	<table border="1px" width="100%" >
-      		<tr>
-      			<td>Imagen</td>
-      			<td>Nombre</td>
-      			<td>Precio</td>
-      			<td>Cantidad</td>
-      			<td>Subtotal</td>
-      		</tr>
-      		<?php
-      			$re=mysql_query("select * from compras");
-      			$numeroventa=0;
-      			while ($f=mysql_fetch_array($re)) {
-					if($numeroventa	!=$f['numeroventa']){
-						echo '<tr><td>Compra Número: '.$f['numeroventa'].' </td></tr>';
-					}
-					$numeroventa=$f['numeroventa'];
-					echo '<tr>
-						<td><img src="catalogo/images/'.$f['imagen'].'" width="100px" heigth="100px" /></td>
-						<td>'.$f['nombre'].'</td>
-						<td>'.$f['precio'].'</td>
-						<td>'.$f['cantidad'].'</td>
-						<td>'.$f['subtotal'].'</td>
-
-					</tr>';
-			}
-      		?>
-
-      	</table>
-      </div>
     	<div  style="margin-top: 35%;">
     		<p>
 
@@ -101,11 +59,11 @@ if (isset($_SESSION['Usuario'])) {
       		</p>
     	</div>
 		<div class="fixed-action-btn horizontal">
-    <a class="btn-floating btn-large red" href="editar.php">
+    <a class="btn-floating btn-large red">
       <i class="large material-icons">mode_edit</i>
     </a>
     <ul>
-      <li><a class="txt-floating" style="color: red" >Añadir</a></li>
+      <li><a class="txt-floating" style="color: red">Añadir</a></li>
     </ul>
   </div>
 		</div>

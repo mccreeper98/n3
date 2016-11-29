@@ -20,8 +20,10 @@ if (isset($_SESSION['Usuario'])) {
 	<link rel="stylesheet" type="text/css" href="css/home.css" media="none" onload="if(media!='all')media='all'">
 	<link rel="stylesheet" type="text/css" href="css/materialize.css" media="none" onload="if(media!='all')media='all'">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript"  src="js/jquery.js"></script>
 	<script type="text/javascript"  src="js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/modificar.js"></script>
 </head>
 <body>
 
@@ -59,6 +61,7 @@ if (isset($_SESSION['Usuario'])) {
 
 	<form>
         <div class="input-field">
+        <h2>Editar/Borrar</h2>
           <input id="search" type="search" required placeholder="Buscar productos para Editar/Borrar">
           <label for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
@@ -67,49 +70,36 @@ if (isset($_SESSION['Usuario'])) {
       <div name="tabla pedidos">
       	<table border="1px" width="100%" >
       		<tr>
-      			<td>Imagen</td>
+      			<td>Id</td>
       			<td>Nombre</td>
       			<td>Precio</td>
-      			<td>Cantidad</td>
-      			<td>Subtotal</td>
+      			<td>Eliminar</td>
+      			<td>Modificar</td>
       		</tr>
       		<?php
-      			$re=mysql_query("select * from compras");
-      			$numeroventa=0;
-      			while ($f=mysql_fetch_array($re)) {
-					if($numeroventa	!=$f['numeroventa']){
-						echo '<tr><td>Compra Número: '.$f['numeroventa'].' </td></tr>';
+      			$resultado=mysql_query("select * from producto")or die(mysql_error());
+      			while ($row=mysql_fetch_array($resultado)) {
+						echo '
+						<tr>
+							<td>
+								<input type="hidden" value="'.$row[0].'">'.$row[0].'
+								<input type="hidden" class="imagen" value="'.$row[5].'">
+							</td>
+							<td><input type="text" class="nombre" value="'.$row[1].'"></td>
+							<td><input type="text" class="precio" value="'.$row[2].'"></td>
+							<td><button class="eliminar" data-id="'.$row[0].'">Eliminar</button></td>
+							<td><button class="modificar" data-id="'.$row[0].'">Modificar</button></td>
+						</tr>
+						';
 					}
-					$numeroventa=$f['numeroventa'];
-					echo '<tr>
-						<td><img src="catalogo/images/'.$f['imagen'].'" width="100px" heigth="100px" /></td>
-						<td>'.$f['nombre'].'</td>
-						<td>'.$f['precio'].'</td>
-						<td>'.$f['cantidad'].'</td>
-						<td>'.$f['subtotal'].'</td>
-
-					</tr>';
-			}
+			
       		?>
 
       	</table>
       </div>
-    	<div  style="margin-top: 35%;">
-    		<p>
-
-      		<a class="btn-floating btn-large waves-effect waves-light red right" href="registrar.php"><i class="material-icons" >add</i></a>
-      		</p>
-    	</div>
-		<div class="fixed-action-btn horizontal">
-    <a class="btn-floating btn-large red" href="editar.php">
-      <i class="large material-icons">mode_edit</i>
-    </a>
-    <ul>
-      <li><a class="txt-floating" style="color: red" >Añadir</a></li>
-    </ul>
   </div>
 		</div>
-	</div>
+	
 
 
 

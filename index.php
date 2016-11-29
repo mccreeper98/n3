@@ -1,3 +1,9 @@
+<?php
+
+	session_start();
+
+?>
+
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -14,9 +20,109 @@
 	</head>
 	<body>
 			<!--Inicio de la barra de navegacion-->
-			<div class="navbar-fixed">
-				<nav>
+					<?php
+
+					if (isset($_SESSION['Usuario'])) {
+
+					?>
+					<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper">
+				<a href="index.php" id="Logo" class="brand-logo left">n³</a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
+				<ul  id="enlaces_menu" class="hide-on-med-and-down">
+					<li><a href="index.php"><h5>Administración</h5></a></li>
+					<ul id="" class="hide-on-med-and-down right">	
+						<li><a href="admin/registro.php" id="BotonSignUp">Registrar Administrador</a></li>
+						<li><a href="admin/cerrar.php" id="BotonLogin">Cerrar sesión</a></li>				
+					</ul>		
+				</ul>
+
+				<ul class="side-nav" id="mobile-demo">
+					<li><a href="index.php">Administración</a></li>
+					<li><a href="admin/registro.php" id="BotonSignUp">Registrar Administrador</a></li>
+					<li><a href="admin/cerrar.php" id="BotonLogin">Cerrar sesión</a></li>
+
+				</ul>
+			</div>		
+		</nav>	
+	</div>
+	<script type="text/javascript">$(".button-collapse").sideNav();</script>
+	<!-- Fin de la barra de navegacion-->
+
+
+	<div class="container">
+		<div class="row">
+			<br>
+			<br>
+
+	<form>
+        <div class="input-field">
+          <input id="search" type="search" required placeholder="Buscar productos para Editar/Borrar">
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+
+    	<div  style="margin-top: 15%;">
+    		<p>
+      		<a class="btn-floating btn-large waves-effect waves-light red right" href="admin/registrar.php"><i class="material-icons" >add</i></a>
+      		</p>
+    	</div>
+    	<br><a href="admin/pedidos.php">Pedidos</a>
+		<div class="fixed-action-btn horizontal">
+    <a class="btn-floating btn-large red" href="admin/editar.php">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li><a class="txt-floating" style="color: red" >Añadir</a></li>
+    </ul>
+  </div>
+		</div>
+	</div>
+					<?php
+
+					}else{
+						?>
+					<div class="navbar-fixed">
+					<nav>
 					<div class="nav-wrapper">
+					<?php	
+						if (isset($_SESSION['Comprador'])) {
+							$arreglo=$_SESSION['Comprador'];
+
+							$usu=$arreglo[0]['Nombre'];
+					?>
+
+					<a href="index.php" id="Logo" class="brand-logo left" title="Inicio"><img src="img/buenFin.png" height="50px">n³</a>
+						<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
+						<ul  id="enlaces_menu" class="hide-on-med-and-down">
+							<li><a href="catalogo/index.php">Tienda</a></li>
+							<li><a href="ofertas/index.php">Ofertas</a></li>
+							<li><a href="tutoriales/index.php">Tutoriales</a></li>	
+							<ul id="" class="hide-on-med-and-down right">	
+								<li><a href="carrito/index.php" id="BotonCarrito" title="Ver Carrito de Compras"><img height="50px" src="img/carrito.png"></a></li>
+								<li><a href="perfil.php" id="BotonSignUp"><?php echo $usu; ?></a></li>
+								<li><a href="cerrar.php" id="BotonLogin">Cerrar sesión</a></li>				
+							</ul>		
+						</ul>
+
+						<ul class="side-nav" id="mobile-demo">
+							<a href="carrito/index.php" id="BotonCarrito"><img height="50px" src="img/carrito.png"></a>
+							<li><a href="#" id="BotonSignUp"><?php echo $usu; ?></a></li>
+							<li><a href="catalogo/index.php">Tienda</a></li>
+							<li><a href="ofertas/index.php">Ofertas</a></li>	
+							<li><a href="tutoriales/index.php">Tutoriales</a></li>
+							<li><a href="cerrar.php" id="BotonLogin">Cerrar de sesión</a></li>
+						</ul>
+	
+					</div>		
+				</nav>	
+			</div>
+			<script type="text/javascript">$(".button-collapse").sideNav();</script>
+
+					<?php
+						}else{ ?>
 						<a href="index.php" id="Logo" class="brand-logo left" title="Inicio"><img src="img/buenFin.png" height="50px">n³</a>
 						<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
 						<ul  id="enlaces_menu" class="hide-on-med-and-down">
@@ -31,17 +137,21 @@
 						</ul>
 
 						<ul class="side-nav" id="mobile-demo">
-							<li><a href="catalogo/index.php">Tienda</a></li>
-							<a href="carrito/index.php" id="BotonCarrito"><img height="50px" src="img/carrito.png"></a>	
+						|	<a href="carrito/index.php" id="BotonCarrito"><img height="50px" src="img/carrito.png"></a>	
 							<li><a href="SignUp.php" id="BotonSignUp">Registrate</a></li>		
 							<li><a href="Login.php" id="BotonLogin">Inicio de sesión</a></li>	
+							<li><a href="catalogo/index.php">Tienda</a></li>
 							<li><a href="ofertas/index.php">Ofertas</a></li>	
 							<li><a href="tutoriales/index.php">Tutoriales</a></li>
 						</ul>
+	
 					</div>		
 				</nav>	
 			</div>
 			<script type="text/javascript">$(".button-collapse").sideNav();</script>
+					<?php
+						}
+					?>	
 			<!-- Fin de la barra de navegacion-->
 
 			<noscript>
@@ -60,7 +170,7 @@
 							<div class="caption center-align">
 								<h3>Al final...¡Encajan!</h3>
 								<h5 class="light grey-text text-lighten-3">Ediciones especiales 3x3</h5>
-								<a class="waves-effect waves-light btn" href="catalogo/index.php">Comprar</a>
+								<a class="waves-effect waves-light btn ">Comprar</a>
 							</div>
 						</li>
 						<li>
@@ -263,7 +373,11 @@
 		</footer>
 
 		<!-- Footer -->
+<?php
 
+	}
+
+?>
 
 	</body>
 	</html>

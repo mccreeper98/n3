@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +25,7 @@
 			<center><a href="index.php"><h1>n³</h1></a></center>
 		</div>
 
-			<!-- Facebook login-->
+			<!-- Facebook login
 
 			<script type="text/javascript">
 				// Load the SDK FACEBOOK asynchronously
@@ -45,11 +48,11 @@
 				<div class="col s0 m3 l3"></div>
 			</div>
 
-			<!--FIN Facebook login-->
+			FIN Facebook login-->
 
 			<div class="col s12 m12 l12">
 				<br>
-				<hr width="50%">
+				
 			</div>
 
 
@@ -60,11 +63,25 @@
 			<div class="s12 m12 l12">
 				<div class="col s0 m2 l3"></div>
 				<div class="col s12 m8 l6 " id="login">
-					<form name="login" method="post" action="cuenta.php" onsubmit="return validar();">
+					<form name="login" method="post" action="verificar.php" onsubmit="return validar();">
+					<?php
+
+					if (isset($_GET['error'])) {
+						echo '<center><h1>Datos no validos</h1></center>';
+					}
+					if (isset($_GET['comp'])) {
+						echo '<center><h1>Inicie sesión para continuar</h1></center>';
+						?>
+						<input type="hidden" name="ver" value="comp">
+						<?php
+					}
+
+					?>
 						<br><label>Correo:</label>
-						<input type="text" name="mail" id="mail" size="30">
+						<input type="text" name="Usuario" id="usuario" placeholder="Usuario">
+						<!-- <input type="text" name="mail" id="mail" size="30" placeholder="Usuario"> -->
 						<br><label>Contraseña:</label>
-						<input type="password" name="pass" id="pass" size="30" >
+						<input type="password" name="pass" id="pass" size="30" placeholder="Contraseña">
 						<br>
 						<button class="btn waves-effect waves-light left" type="submit" name="enviar">Enviar
 							<i class="material-icons right">send</i>

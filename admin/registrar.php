@@ -1,15 +1,27 @@
+
+<?php
+
+session_start();
+if (isset($_SESSION['Usuario'])) {
+
+}else{
+	header("Location: index.php?Error=Acceso denegado");
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Adminitrador</title>
-	<link rel="shortcut icon" href="favicon.png" />
+	<link rel="shortcut icon" href="../favicon.png" />
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/home.css" media="none" onload="if(media!='all')media='all'">
-	<link rel="stylesheet" type="text/css" href="css/materialize.css" media="none" onload="if(media!='all')media='all'">
+	<link rel="stylesheet" type="text/css" href="../css/home.css" media="none" onload="if(media!='all')media='all'">
+	<link rel="stylesheet" type="text/css" href="../css/materialize.css" media="none" onload="if(media!='all')media='all'">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<script type="text/javascript"  src="js/jquery.js"></script>
-	<script type="text/javascript"  src="js/materialize.min.js"></script>
+	<script type="text/javascript"  src="../js/jquery.js"></script>
+	<script type="text/javascript"  src="../js/materialize.min.js"></script>
 	
 </head>
 <body>
@@ -21,17 +33,17 @@
 				<a href="admin.php" id="Logo" class="brand-logo left">n³</a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
 				<ul  id="enlaces_menu" class="hide-on-med-and-down">
-					<li><a href="admin.php"><h5>Administración</h5></a></li>
+					<li><a href="../index.php"><h5>Administración</h5></a></li>
 					<ul id="" class="hide-on-med-and-down right">	
-						<li><a href="#" id="BotonSignUp">Nombre usuario</a></li>
+						<li><a href="registro.php" id="BotonSignUp">Registrar Administrador</a></li>
 						<li><a href="cerrar.php" id="BotonLogin">Cerrar sesión</a></li>				
 					</ul>		
 				</ul>
 
 				<ul class="side-nav" id="mobile-demo">
-					<li><a href="#">Administración</a></li>
-					<li><a href="#" id="BotonSignUp">Nombre usuario</a></li>
-					<li><a href="#" id="BotonLogin">Cerrar sesión</a></li>
+					<li><a href="../index.php">Administración</a></li>
+					<li><a href="registro.php" id="BotonSignUp">Nombre usuario</a></li>
+					<li><a href="cerrar.php" id="BotonLogin">Cerrar sesión</a></li>
 
 				</ul>
 			</div>		

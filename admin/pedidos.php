@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include 'conexion.php';
+include '../conexion.php';
 if (isset($_SESSION['Usuario'])) {
 
 }else{
@@ -13,15 +13,15 @@ if (isset($_SESSION['Usuario'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Adminitrador</title>
-	<link rel="shortcut icon" href="favicon.png" />
+	<title>Pedidos</title>
+	<link rel="shortcut icon" href="../favicon.png" />
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/home.css" media="none" onload="if(media!='all')media='all'">
-	<link rel="stylesheet" type="text/css" href="css/materialize.css" media="none" onload="if(media!='all')media='all'">
+	<link rel="stylesheet" type="text/css" href="../css/home.css" media="none" onload="if(media!='all')media='all'">
+	<link rel="stylesheet" type="text/css" href="../css/materialize.css" media="none" onload="if(media!='all')media='all'">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<script type="text/javascript"  src="js/jquery.js"></script>
-	<script type="text/javascript"  src="js/materialize.min.js"></script>
+	<script type="text/javascript"  src="../js/jquery.js"></script>
+	<script type="text/javascript"  src="../js/materialize.min.js"></script>
 </head>
 <body>
 
@@ -29,20 +29,20 @@ if (isset($_SESSION['Usuario'])) {
 	<div class="navbar-fixed">
 		<nav>
 			<div class="nav-wrapper">
-				<a href="#" id="Logo" class="brand-logo left">n³</a>
+				<a href="../index.php" id="Logo" class="brand-logo left">n³</a>
 				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
 				<ul  id="enlaces_menu" class="hide-on-med-and-down">
-					<li><a href="#"><h5>Administración</h5></a></li>
+					<li><a href="../index.php"><h5>Administración</h5></a></li>
 					<ul id="" class="hide-on-med-and-down right">	
-						<li><a href="#" id="BotonSignUp">Nombre usuario</a></li>
+						<li><a href="registro.php" id="BotonSignUp">Registrar Administrador</a></li>
 						<li><a href="cerrar.php" id="BotonLogin">Cerrar sesión</a></li>				
 					</ul>		
 				</ul>
 
 				<ul class="side-nav" id="mobile-demo">
-					<li><a href="#">Administración</a></li>
-					<li><a href="#" id="BotonSignUp">Nombre usuario</a></li>
-					<li><a href="#" id="BotonLogin">Cerrar sesión</a></li>
+					<li><a href="../index.php">Administración</a></li>
+					<li><a href="registro.php" id="BotonSignUp">Registrar Administrador</a></li>
+					<li><a href="cerrar.php" id="BotonLogin">Cerrar sesión</a></li>
 
 				</ul>
 			</div>		
@@ -57,13 +57,6 @@ if (isset($_SESSION['Usuario'])) {
 			<br>
 			<br>
 
-	<form>
-        <div class="input-field">
-          <input id="search" type="search" required placeholder="Buscar productos para Editar/Borrar">
-          <label for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-      </form>
       <div name="tabla pedidos">
       	<table border="1px" width="100%" >
       		<tr>
@@ -82,7 +75,7 @@ if (isset($_SESSION['Usuario'])) {
 					}
 					$numeroventa=$f['numeroventa'];
 					echo '<tr>
-						<td><img src="catalogo/images/'.$f['imagen'].'" width="100px" heigth="100px" /></td>
+						<td><img src="../catalogo/images/'.$f['imagen'].'" width="100px" heigth="100px" /></td>
 						<td>'.$f['nombre'].'</td>
 						<td>'.$f['precio'].'</td>
 						<td>'.$f['cantidad'].'</td>

@@ -16,5 +16,19 @@ var inicio=function   (){
 			}
 		}
 	});
+	$(".eliminar").click(function(e){
+		e.preventDefault();
+		var id=$(this).attr('data-id');
+		$(this).parentsUntil('.producto').remove();
+		$.post('./js/eliminar.php',{
+			Id:id
+		},function(a){
+			
+			if(a=='0'){
+				location.href="./index.php";
+			}
+		});
+
+	});
 }
 $(document).on('ready',inicio);

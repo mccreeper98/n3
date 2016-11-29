@@ -1,3 +1,8 @@
+<?php
+
+	session_start();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,33 +21,74 @@
 
 	<!--Inicio de la barra de navegacion-->
 	<div class="navbar-fixed">
-		<nav>
-			<div class="nav-wrapper">
-				<a href="../index.php" id="Logo" class="brand-logo left">n³</a><a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
-				<ul  id="enlaces_menu" class="hide-on-med-and-down">
-					<li><a href="../catalogo/index.php">Tienda</a></li>
-					<li><a href="../ofertas/index.php">Ofertas</a></li>
-					<li><a href="../tutoriales/index.php">Tutoriales</a></li>
-					<ul id="" class="hide-on-med-and-down right">	
-						<li><a href="../carrito/index.php" id="BotonCarrito"><img height="50px" src="../img/carrito.png"></a></li>
-						<li><a href="../SignUp.php" id="BotonSignUp">Registrate</a></li>
-						<li><a href="../Login.php" id="BotonLogin">Inicio de sesión</a></li>				
-					</ul>		
-				</ul>
+					<nav>
+					<div class="nav-wrapper">
+					<?php	
+						if (isset($_SESSION['Comprador'])) {
+							$arreglo=$_SESSION['Comprador'];
 
-				<ul class="side-nav" id="mobile-demo">
-					<li><a href="../catalogo/index.php">Tienda</a></li>
-					<li><a href="../carrito/index.php" id="BotonCarrito"><img height="50px" src="../img/carrito.png"></a></li>
-					<li><a href="../SignUp.php" id="BotonSignUp">Registrate</a></li>		
-					<li><a href="../Login.php" id="BotonLogin">Inicio de sesión</a></li>	
-					<li><a href="../ofertas/index.php">Ofertas</a></li>	
-					<li><a href="../tutoriales/index.php">Tutoriales</a></li>
-				</ul>
-			</div>		
-		</nav>	
-	</div>
-	<script type="text/javascript">$(".button-collapse").sideNav();</script>
-	<!-- Fin de la barra de navegacion-->
+							$usu=$arreglo[0]['Nombre'];
+					?>
+
+					<a href="../index.php" id="Logo" class="brand-logo left" title="Inicio"><img src="../img/buenFin.png" height="50px">n³</a>
+						<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
+						<ul  id="enlaces_menu" class="hide-on-med-and-down">
+							<li><a href="index.php">Tienda</a></li>
+							<li><a href="../ofertas/index.php">Ofertas</a></li>
+							<li><a href="../tutoriales/index.php">Tutoriales</a></li>	
+							<ul id="" class="hide-on-med-and-down right">	
+								<li><a href="../carrito/index.php" id="BotonCarrito" title="Ver Carrito de Compras"><img height="50px" src="../img/carrito.png"></a></li>
+								<li><a href="../perfil.php" id="BotonSignUp"><?php echo $usu; ?></a></li>
+								<li><a href="../cerrar.php" id="BotonLogin">Cerrar sesión</a></li>				
+							</ul>		
+						</ul>
+
+						<ul class="side-nav" id="mobile-demo">
+							<a href="../carrito/index.php" id="BotonCarrito"><img height="50px" src="../img/carrito.png"></a>
+							<li><a href="../perfil.php" id="BotonSignUp"><?php echo $usu; ?></a></li>
+							<li><a href="index.php">Tienda</a></li>
+							<li><a href="../ofertas/index.php">Ofertas</a></li>	
+							<li><a href="../tutoriales/index.php">Tutoriales</a></li>
+							<li><a href="../cerrar.php" id="BotonLogin">Cerrar de sesión</a></li>
+						</ul>
+	
+					</div>		
+				</nav>	
+			</div>
+			<script type="text/javascript">$(".button-collapse").sideNav();</script>
+
+					<?php
+						}else{ ?>
+						<a href="../index.php" id="Logo" class="brand-logo left" title="Inicio"><img src="../img/buenFin.png" height="50px">n³</a>
+						<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"><i class="material-icons">menu</i></i></a>
+						<ul  id="enlaces_menu" class="hide-on-med-and-down">
+							<li><a href="index.php">Tienda</a></li>
+							<li><a href="../ofertas/index.php">Ofertas</a></li>
+							<li><a href="../tutoriales/index.php">Tutoriales</a></li>	
+							<ul id="" class="hide-on-med-and-down right">	
+								<li><a href="../carrito/index.php" id="BotonCarrito" title="Ver Carrito de Compras"><img height="50px" src="../img/carrito.png"></a></li>
+								<li><a href="../SignUp.php" id="BotonSignUp">Registrate</a></li>
+								<li><a href="../Login.php" id="BotonLogin">Inicio de sesión</a></li>				
+							</ul>		
+						</ul>
+
+						<ul class="side-nav" id="mobile-demo">
+						|	<a href="../carrito/index.php" id="BotonCarrito"><img height="50px" src="../img/carrito.png"></a>	
+							<li><a href="../SignUp.php" id="BotonSignUp">Registrate</a></li>		
+							<li><a href="../Login.php" id="BotonLogin">Inicio de sesión</a></li>	
+							<li><a href="index.php">Tienda</a></li>
+							<li><a href="../ofertas/index.php">Ofertas</a></li>	
+							<li><a href="../tutoriales/index.php">Tutoriales</a></li>
+						</ul>
+	
+					</div>		
+				</nav>	
+			</div>
+			<script type="text/javascript">$(".button-collapse").sideNav();</script>
+					<?php
+						}
+					?>	
+			<!-- Fin de la barra de navegacion-->
 
 	<!-- parallax --> 
 	<script type="text/javascript">
@@ -89,74 +135,34 @@
 				</div>
 
 				<div id="novedadesprincipales">
-					<!-- novedad -->
+					<!-- novedades -->
+				<?php
+					include '../conexion.php';
+					$re=mysql_query("select *, nomMar, Col from producto as p inner join marca as m on m.idMar = p.idMar inner join base as b on b.idProd = p.idProd inner join color as c on c.idCol = b.idCol ORDER BY p.idProd DESC limit 4")or die(mysql_error());
+					while ($f=mysql_fetch_array($re)) {
+					
+				?>
 					<div  class="col s6 m3 l3">
 						<div class="card">
-							<div class="card-image waves-effect waves-block waves-light">
-								<img class="activator" src="img/novedad1.jpg">
-							</div>
-							<div class="card-content">
-								<span class="card-title activator grey-text text-darken-4">$500<i class="material-icons right">more_vert</i></span>
-								<p><a href="#">COMPRAR</a></p>
-							</div>
-							<div class="card-reveal">
-								<span class="card-title grey-text text-darken-4">Marca<i class="material-icons right">close</i></span>
-								<p>Descripcion</p>
-							</div>
+						<div class="card-image waves-effect waves-block waves-light">
+							<img class="activator" src="images/<?php echo $f['imgProd']?>" width="500">
+						</div>
+						<div class="card-content">
+							<span class="card-title activator grey-text text-darken-4"><?php echo $f['desProd'];?><i class="material-icons right">more_vert</i></span>
+							<p><a href="../carrito/index.php?id=<?php echo $f['idProd']; ?>"><h6>Agregar al carrito</h6></a></p>
+						</div>
+						<div class="card-reveal">
+							<span class="card-title grey-text text-darken-4"><?php echo $f['desProd'];?><i class="material-icons right">close</i></span>
+							<p>Precio: $<?php echo $f['preProd'];?></p><p>Marca: <?php echo $f['nomMar']; ?></p>
+							<p>Base: <?php echo $f['Col'] ?></p>
+							<p><a href="../carrito/index.php?id=<?php echo $f['idProd']; ?>"><h6>Agregar al carrito</h6></a></p>
 						</div>
 					</div>
-					<!-- novedad -->
-					<!-- novedad -->
-					<div  class="col s6 m3 l3">
-						<div class="card">
-							<div class="card-image waves-effect waves-block waves-light">
-								<img class="activator" src="img/novedad2.jpg">
-							</div>
-							<div class="card-content">
-								<span class="card-title activator grey-text text-darken-4">$500<i class="material-icons right">more_vert</i></span>
-								<p><a href="#">COMPRAR</a></p>
-							</div>
-							<div class="card-reveal">
-								<span class="card-title grey-text text-darken-4">Marca<i class="material-icons right">close</i></span>
-								<p>Descripcion</p>
-							</div>
-						</div>
 					</div>
-					<!-- novedad -->
-					<!-- novedad -->
-					<div  class="col s6 m3 l3">
-						<div class="card">
-							<div class="card-image waves-effect waves-block waves-light">
-								<img class="activator" src="img/novedad3.jpg">
-							</div>
-							<div class="card-content">
-								<span class="card-title activator grey-text text-darken-4">$500<i class="material-icons right">more_vert</i></span>
-								<p><a href="#">COMPRAR</a></p>
-							</div>
-							<div class="card-reveal">
-								<span class="card-title grey-text text-darken-4">Marca<i class="material-icons right">close</i></span>
-								<p>Descripcion</p>
-							</div>
-						</div>
-					</div>
-					<!-- novedad -->
-					<!-- novedad -->
-					<div  class="col s6 m3 l3">
-						<div class="card">
-							<div class="card-image waves-effect waves-block waves-light">
-								<img class="activator" src="img/novedad4.jpg">
-							</div>
-							<div class="card-content">
-								<span class="card-title activator grey-text text-darken-4">$500<i class="material-icons right">more_vert</i></span>
-								<p><a href="#">COMPRAR</a></p>
-							</div>
-							<div class="card-reveal">
-								<span class="card-title grey-text text-darken-4">Marca<i class="material-icons right">close</i></span>
-								<p>Descripcion</p>
-							</div>
-						</div>
-					</div>
-					<!-- novedad -->
+					<?php
+						}
+					?>
+					<!-- novedades -->
 				</div>
 			</div>
 		</div>
